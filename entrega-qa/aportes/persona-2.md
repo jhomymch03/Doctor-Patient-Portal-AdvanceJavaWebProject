@@ -4,9 +4,9 @@ Completar en la rama `qa/admin-catalogo` con datos ficticios. No poner contrase�
 
 | Campo | Valor a completar |
 | --- | --- |
-| Nombre y usuario GitHub | Nombre por confirmar; identidad Git local `karciss` |
+| Nombre y usuario GitHub | Nombre por completar por la integrante; usuario GitHub `karciss` |
 | Fecha y ambiente | 19/10/2026; Windows, Tomcat 9, MySQL en Docker (`hospital-mysql`), Chrome 155 headless, Cypress 16.1.1, `http://127.0.0.1:8080/Doctor-Patient-Portal/` |
-| URL del fork y PR | Fork: https://github.com/jhomymch03/Doctor-Patient-Portal-AdvanceJavaWebProject ; PR: pendiente de crear |
+| URL del fork y PR | Fork: https://github.com/jhomymch03/Doctor-Patient-Portal-AdvanceJavaWebProject ; PR: https://github.com/jhomymch03/Doctor-Patient-Portal-AdvanceJavaWebProject/pull/2 |
 | Historia/casos | HU-02 / TC-03, TC-04, TC-07, TC-08 |
 
 ## Casos ejecutados
@@ -26,4 +26,4 @@ Se añadieron al único `cypress/e2e/portal_hospital.cy.js` los tests TC-03 y TC
 
 Verificación aislada de los mismos pasos de TC-07/08 con un spec temporal, retirado antes del commit: **1 aprobado, 0 fallidos**, dos capturas revisadas. Esto comprueba la funcionalidad local, pero **no** equivale a una ejecución del flujo largo integrado en esta rama. Registro: [evidencia de ejecución](../evidencias/persona-2/ejecucion.md).
 
-Defectos observados: ninguno en los casos ejecutados. Bloqueo pendiente: suite funcional integrada hasta los PR de Personas 3 y 4. Revisor: por asignar por el grupo. Enlace del PR: pendiente de crear.
+Defectos observados: ninguno en los casos ejecutados. Bloqueo pendiente: suite funcional integrada hasta los PR de Personas 3 y 4. Revisión solicitada a `jhomymch03` (Persona 1). Enlace del PR: https://github.com/jhomymch03/Doctor-Patient-Portal-AdvanceJavaWebProject/pull/2.
