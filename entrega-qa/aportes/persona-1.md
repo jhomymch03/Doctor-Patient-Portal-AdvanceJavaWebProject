@@ -6,7 +6,7 @@ Completar en la rama `qa/plan-smoke`. La Persona 1 es Scrum Master y propietaria
 | --- | --- |
 | Nombre y usuario GitHub | Nombre completo pendiente de confirmación / `@jhomymch03` |
 | Fecha y ambiente | 19 de octubre de 2026; Windows; Docker Desktop 4.88.1; MySQL 8; Tomcat 9; Cypress 16.1.1; Electron 146 headless |
-| URL del fork y PR | Fork: `https://github.com/jhomymch03/Doctor-Patient-Portal-AdvanceJavaWebProject`; PR: pendiente de apertura |
+| URL del fork y PR | Fork: `https://github.com/jhomymch03/Doctor-Patient-Portal-AdvanceJavaWebProject`; PR: `https://github.com/jhomymch03/Doctor-Patient-Portal-AdvanceJavaWebProject/pull/1` |
 | Historia/caso | HU-01 / TC-01; revisión transversal de TC-01 a TC-04 |
 
 ## Revisión del plan
@@ -25,4 +25,4 @@ Defectos, bloqueos o riesgos encontrados: no se observaron defectos en TC-01. Ri
 
 ## Revisión y PR
 
-Archivos modificados y motivo: `cypress/e2e/portal_hospital.cy.js` para añadir TC-01; `aportes/persona-1.md` para registrar revisión y resultados; `evidencias/persona-1/TC-01-2026-10-19.md` para conservar la evidencia. Revisor propuesto: Persona 4. Enlace del PR: pendiente de apertura.
+Archivos modificados y motivo: `cypress/e2e/portal_hospital.cy.js` para añadir TC-01; `aportes/persona-1.md` para registrar revisión y resultados; `evidencias/persona-1/TC-01-2026-10-19.md` para conservar la evidencia. Revisor propuesto: Persona 4. Enlace del PR: `https://github.com/jhomymch03/Doctor-Patient-Portal-AdvanceJavaWebProject/pull/1`.
