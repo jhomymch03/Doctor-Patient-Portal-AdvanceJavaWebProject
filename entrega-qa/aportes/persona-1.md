@@ -9,6 +9,10 @@ Completar en la rama `qa/plan-smoke`. La Persona 1 es Scrum Master y propietaria
 | URL del fork y PR | Fork: `https://github.com/jhomymch03/Doctor-Patient-Portal-AdvanceJavaWebProject`; PR: `https://github.com/jhomymch03/Doctor-Patient-Portal-AdvanceJavaWebProject/pull/1` |
 | Historia/caso | HU-01 / TC-01; revisión transversal de TC-01 a TC-04 |
 
+## Preparación del fork común
+
+El fork común quedó creado bajo `@jhomymch03` y el commit base se publicó en `main` con la plantilla Cypress. El 19 de octubre de 2026 se confirmó en GitHub que las tres invitaciones fueron aceptadas: Persona 2 `@karciss`, Persona 3 `@BolivianProgrammer` y Persona 4 `@Chucharizard`. GitHub muestra tres colaboradores y ninguna invitación pendiente. Con esto queda completado el acceso requerido para que cada integrante cree su rama y aporte mediante su propio Pull Request.
+
 ## Revisión del plan
 
 Se revisaron objetivo, alcance, prioridades P0/P1, criterios de entrada/salida, riesgos y trazabilidad. El plan vigente vincula correctamente HU-01 con TC-01 y define TC-01 a TC-04 como smoke P0, por lo que no se propuso un cambio documental. Se registra como desviación del ambiente que esta ejecución individual usó Electron 146 porque Chrome no está disponible en el equipo; el smoke final deberá ejecutarse con el navegador acordado o dejar documentada la excepción.
