@@ -27,6 +27,15 @@ function loginPatient(email, password) {
 
 describe('Smoke test del portal hospitalario', () => {
   // PERSONA_1_TC01_INICIO
+  it('TC-01 | abre portada y navegación principal', () => {
+    cy.visit('/');
+    cy.title().should('contain', 'Home Page | Doctor Patient Portal');
+    cy.get('nav').should('contain.text', 'Doctor Patient Portal');
+    cy.get('nav a[href="admin_login.jsp"]').should('be.visible');
+    cy.get('nav a[href="doctor_login.jsp"]').should('be.visible');
+    cy.get('nav a[href="user_login.jsp"]').should('be.visible');
+    cy.get('nav a[href="user_appointment.jsp"]').should('be.visible');
+  });
   // PERSONA_1_TC01_FIN
 
   // PERSONA_3_TC02_INICIO
