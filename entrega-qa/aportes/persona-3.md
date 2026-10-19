@@ -6,7 +6,7 @@ Completar en la rama `qa/pacientes` con correo ficticio único de `example.test`
 | --- | --- |
 | Nombre y usuario GitHub | Nombre por completar / `@BolivianProgrammer` |
 | Fecha y ambiente | 19 de octubre de 2026; Windows; Docker (MySQL 8.4 `hospital-mysql`, Tomcat 9 con JDK 21); Cypress 16.1.1; Chrome 155 headless |
-| URL del fork y PR | Fork: `https://github.com/jhomymch03/Doctor-Patient-Portal-AdvanceJavaWebProject`; PR: pendiente de abrir |
+| URL del fork y PR | Fork: `https://github.com/jhomymch03/Doctor-Patient-Portal-AdvanceJavaWebProject`; PR: `https://github.com/jhomymch03/Doctor-Patient-Portal-AdvanceJavaWebProject/pull/3` |
 | Historias/casos | HU-01/HU-03 / TC-02, TC-05, TC-06 |
 
 ## Casos ejecutados
@@ -19,4 +19,4 @@ Completar en la rama `qa/pacientes` con correo ficticio único de `example.test`
 
 Identificador ficticio del run: `1792438296795133` (spec temporal de TC-05, retirado antes del commit). Revisión/cambio del bloque Cypress y comandos ejecutados: se pegaron sin cambios `PERSONA_3_TC02`, `PERSONA_3_TC06` y `PERSONA_3_REGISTRO` en `cypress/e2e/portal_hospital.cy.js`, conservando los marcadores y los bloques ajenos. `npm run cy:smoke`: 1 passing, 0 failing, 2 pending. `npm run cy:full`: 2 passing, 0 failing, 1 pending (flujo largo `it.skip`). El bloque de registro solo se ejecutará integrado cuando la Persona 4 active el flujo.
 
-Defectos o bloqueos: ninguno observado. Observación: la aplicación guarda las contraseñas de pacientes en texto plano (riesgo ya registrado en el plan). Revisor: Persona 2 (`@karciss`). Enlace del PR: pendiente de abrir.
+Defectos o bloqueos: ninguno observado. Observación: la aplicación guarda las contraseñas de pacientes en texto plano (riesgo ya registrado en el plan). Revisor: Persona 2 (`@karciss`). Enlace del PR: `https://github.com/jhomymch03/Doctor-Patient-Portal-AdvanceJavaWebProject/pull/3`.
