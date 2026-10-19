@@ -1,0 +1,16 @@
+{
+  "name": "hospital-portal-qa",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Práctica Scrum, smoke test y automatización Cypress del portal hospitalario",
+  "scripts": {
+    "cy:open": "cypress open",
+    "cy:smoke": "cypress run --browser chrome --env onlySmoke=true",
+    "cy:full": "cypress run --browser chrome",
+    "cy:smoke:electron": "cypress run --browser electron --env onlySmoke=true",
+    "cy:full:electron": "cypress run --browser electron"
+  },
+  "devDependencies": {
+    "cypress": "16.1.1"
+  }
+}
