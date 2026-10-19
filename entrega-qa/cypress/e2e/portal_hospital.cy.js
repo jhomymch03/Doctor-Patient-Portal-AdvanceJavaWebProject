@@ -30,6 +30,16 @@ describe('Smoke test del portal hospitalario', () => {
   // PERSONA_1_TC01_FIN
 
   // PERSONA_3_TC02_INICIO
+  it('TC-02 | abre formularios principales', () => {
+    cy.visit('/signup.jsp');
+    cy.get('form[action="user_register"]').should('be.visible');
+    cy.visit('/user_login.jsp');
+    cy.get('form[action="userLogin"]').should('be.visible');
+    cy.visit('/doctor_login.jsp');
+    cy.get('form[action="doctorLogin"]').should('be.visible');
+    cy.visit('/user_appointment.jsp');
+    cy.get('form[action="addAppointment"]').should('be.visible');
+  });
   // PERSONA_3_TC02_FIN
 
   // PERSONA_2_TC03_TC04_INICIO
@@ -40,6 +50,14 @@ const describeFunctional = Cypress.expose('onlySmoke') ? describe.skip : describ
 
 describeFunctional('Flujo funcional de extremo a extremo', () => {
   // PERSONA_3_TC06_INICIO
+  it('TC-06 | rechaza acceso de paciente con credenciales inválidas', () => {
+    cy.visit('/user_login.jsp');
+    cy.get('form[action="userLogin"] input[name="email"]').type(`inexistente.${Date.now()}@example.test`);
+    cy.get('form[action="userLogin"] input[name="password"]').type('incorrecta', { log: false });
+    cy.get('form[action="userLogin"] button[type="submit"]').click();
+    cy.location('pathname').should('include', '/user_login.jsp');
+    cy.contains('Invalid email or password').should('be.visible');
+  });
   // PERSONA_3_TC06_FIN
 
   // La Persona 4 cambia it.skip por it al completar el flujo.
@@ -61,6 +79,16 @@ describeFunctional('Flujo funcional de extremo a extremo', () => {
       .toISOString().slice(0, 10);
 
     // PERSONA_3_REGISTRO_INICIO
+    // HU-03: registro y autenticación del paciente.
+    cy.visit('/signup.jsp');
+    cy.get('form[action="user_register"] input[name="fullName"]').type(patient.name);
+    cy.get('form[action="user_register"] input[name="email"]').type(patient.email);
+    cy.get('form[action="user_register"] input[name="password"]').type(patient.password, { log: false });
+    cy.get('form[action="user_register"] button[type="submit"]').click();
+    cy.contains('Register Successfully').should('be.visible');
+    loginPatient(patient.email, patient.password);
+    cy.get('#dropdownMenuButton1').should('contain.text', patient.name);
+    cy.visit('/userLogout');
     // PERSONA_3_REGISTRO_FIN
 
     // PERSONA_2_ADMIN_INICIO
