@@ -33,6 +33,20 @@ describe('Smoke test del portal hospitalario', () => {
   // PERSONA_3_TC02_FIN
 
   // PERSONA_2_TC03_TC04_INICIO
+  it('TC-03 | inicia sesión de administrador y consulta el panel', () => {
+    loginAdmin();
+    cy.contains('Total Appointment').should('be.visible');
+    cy.contains('Specialist').should('be.visible');
+  });
+
+  it('TC-04 | rechaza acceso de administrador con contraseña incorrecta', () => {
+    cy.visit('/admin_login.jsp');
+    cy.get('form[action="adminLogin"] input[name="email"]').type(admin.email);
+    cy.get('form[action="adminLogin"] input[name="password"]').type('incorrecta', { log: false });
+    cy.get('form[action="adminLogin"] button[type="submit"]').click();
+    cy.location('pathname').should('include', '/admin_login.jsp');
+    cy.contains('Invalid Username or Password.').should('be.visible');
+  });
   // PERSONA_2_TC03_TC04_FIN
 });
 
@@ -64,6 +78,26 @@ describeFunctional('Flujo funcional de extremo a extremo', () => {
     // PERSONA_3_REGISTRO_FIN
 
     // PERSONA_2_ADMIN_INICIO
+    // HU-02: el administrador agrega una especialidad y un doctor.
+    loginAdmin();
+    cy.get('[data-bs-target="#exampleModal"]').click();
+    cy.get('#exampleModal').should('be.visible');
+    cy.get('form[action="../addSpecialist"] input[name="specialistName"]').type(specialist);
+    cy.get('form[action="../addSpecialist"] button[type="submit"]').click();
+    cy.contains('Specialist added Successfully.').should('be.visible');
+
+    cy.visit('/admin/doctor.jsp');
+    cy.get('form[action="../addDoctor"] input[name="fullName"]').type(doctor.name);
+    cy.get('form[action="../addDoctor"] input[name="dateOfBirth"]').type('1985-05-10');
+    cy.get('form[action="../addDoctor"] input[name="qualification"]').type('Medicina general');
+    cy.get('form[action="../addDoctor"] select[name="specialist"]').select(specialist);
+    cy.get('form[action="../addDoctor"] input[name="email"]').type(doctor.email);
+    cy.get('form[action="../addDoctor"] input[name="phone"]').type('70012345');
+    cy.get('form[action="../addDoctor"] input[name="password"]').type(doctor.password, { log: false });
+    cy.get('form[action="../addDoctor"] button[type="submit"]').click();
+    cy.contains('Doctor added Successfully').should('be.visible');
+    cy.visit('/admin/view_doctor.jsp');
+    cy.get('table tbody tr').contains(doctor.email).should('be.visible');
     // PERSONA_2_ADMIN_FIN
 
     // PERSONA_4_CITA_INICIO
