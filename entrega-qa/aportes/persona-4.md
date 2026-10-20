@@ -10,7 +10,7 @@ Se añadieron los bloques de TC-09/TC-10 y se activó el recorrido completo desp
 | Rama y base | `qa/citas-doctor`, desde `main` integrado `8baac8a` |
 | Historias y casos | HU-03/HU-04 / TC-09 y TC-10 |
 | Commit de código ejecutado | `aab4ce7d9a2913583a04ad6ae0ad35c9afbdfc7d` |
-| PR | Pendiente de apertura al terminar de adjuntar esta evidencia |
+| PR | https://github.com/jhomymch03/Doctor-Patient-Portal-AdvanceJavaWebProject/pull/4 |
 
 ## Casos ejecutados
 
@@ -37,4 +37,4 @@ Ejecución automática asistida por Codex, con revisión visual de las cuatro ca
 
 No se observaron defectos funcionales en los dos casos en este ambiente. La validación final en MySQL 8 queda a cargo del integrador después del merge, junto con la revisión y consolidación del equipo.
 
-Revisor previsto según el reparto: Persona 3, `BolivianProgrammer`. Revisión y merge del PR: pendientes.
+Revisión solicitada en GitHub a Persona 3, `BolivianProgrammer`. Revisión y merge del PR: pendientes.
