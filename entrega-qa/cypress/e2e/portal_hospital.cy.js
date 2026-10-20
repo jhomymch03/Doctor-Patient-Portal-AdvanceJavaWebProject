@@ -1,7 +1,5 @@
-// Plantilla para el commit inicial del fork. No es la entrega final.
-// Cada persona copia su código desde codigo-por-persona/persona-N.md
-// en los marcadores indicados. No declarar la suite completa como aprobada
-// hasta integrar los cuatro PR y ejecutar las pruebas contra la BD de práctica.
+// Suite integrada del equipo; ejecutar contra la instalación local de práctica.
+// El flujo completo crea paciente, especialidad, doctor y cita ficticios.
 
 const admin = {
   email: Cypress.expose('adminEmail'),
@@ -83,8 +81,8 @@ describeFunctional('Flujo funcional de extremo a extremo', () => {
   });
   // PERSONA_3_TC06_FIN
 
-  // La Persona 4 cambia it.skip por it al completar el flujo.
-  it.skip('TC-05 y TC-07 a TC-10 | registra paciente, especialista y doctor; crea y atiende una cita', () => {
+  // Persona 4 activa el flujo después de integrar administración y paciente.
+  it('TC-05 y TC-07 a TC-10 | registra paciente, especialista y doctor; crea y atiende una cita', () => {
     const runId = `${Date.now()}${Math.floor(Math.random() * 1000)}`;
     const patient = {
       name: `Paciente QA ${runId}`,
@@ -138,9 +136,80 @@ describeFunctional('Flujo funcional de extremo a extremo', () => {
     // PERSONA_2_ADMIN_FIN
 
     // PERSONA_4_CITA_INICIO
+    // HU-03 / TC-09: reserva y listado de la cita con datos ficticios.
+    cy.log(`Persona 4 | TC-09 | runId: ${runId}`);
+    loginPatient(patient.email, patient.password);
+    cy.visit('/user_appointment.jsp');
+    const form = 'form[action="addAppointment"]';
+    cy.get(`${form} input[name="fullName"]`).type(patient.name);
+    cy.get(`${form} select[name="gender"]`).select('female');
+    cy.get(`${form} input[name="age"]`).type('30');
+    cy.get(`${form} input[name="appointmentDate"]`).type(appointmentDate);
+    cy.get(`${form} input[name="email"]`).type(patient.email);
+    cy.get(`${form} input[name="phone"]`).type('70012345');
+    cy.get(`${form} input[name="diseases"]`).type('Control general');
+    cy.get(`${form} select[name="doctorNameSelect"] option`).contains(doctor.name)
+      .invoke('val').then((doctorId) => {
+        cy.get(`${form} select[name="doctorNameSelect"]`).select(doctorId);
+      });
+    cy.get(`${form} textarea[name="address"]`).type('Calle de prueba 123');
+    cy.get(`${form} button[type="submit"]`).click();
+    cy.contains('Appointment is recorded Successfully.').should('be.visible');
+    cy.screenshot(`persona-4/${runId}/TC09-reserva-confirmada`, { capture: 'viewport', scale: true });
+    cy.visit('/view_appointment.jsp');
+    cy.contains('table tbody tr', patient.name)
+      .should('contain.text', doctor.name)
+      .and('contain.text', appointmentDate)
+      .and('contain.text', 'Pending');
+    cy.screenshot(`persona-4/${runId}/TC09-cita-pendiente`, { capture: 'viewport', scale: true });
+    cy.visit('/userLogout');
     // PERSONA_4_CITA_FIN
 
     // PERSONA_4_DOCTOR_INICIO
+    // HU-04 / TC-10: el doctor atiende la cita y guarda el comentario.
+    cy.log(`Persona 4 | TC-10 | runId: ${runId}`);
+    // El listado incluye correos largos; ampliar para que la evidencia sea legible.
+    cy.viewport(1600, 900);
+    cy.visit('/doctor_login.jsp');
+    cy.get('form[action="doctorLogin"] input[name="email"]').type(doctor.email);
+    cy.get('form[action="doctorLogin"] input[name="password"]').type(doctor.password, { log: false });
+    cy.get('form[action="doctorLogin"] button[type="submit"]').click();
+    cy.location('pathname').should('include', '/doctor/index.jsp');
+    cy.visit('/doctor/patient.jsp');
+    cy.contains('table tbody tr', patient.name)
+      .should('contain.text', patient.email)
+      .and('contain.text', appointmentDate)
+      .and('contain.text', 'Pending');
+    cy.screenshot(`persona-4/${runId}/TC10-cita-del-doctor`, { capture: 'viewport', scale: true });
+    cy.contains('table tbody tr', patient.name)
+      .contains('a', 'Comment / Prescription')
+      .should('not.have.class', 'disabled').click();
+    cy.get('form[action="../updateStatus"] input[name="fullName"]')
+      .should('have.value', patient.name);
+    cy.get('form[action="../updateStatus"] input[name="id"]').invoke('val')
+      .then((appointmentId) => {
+        cy.writeFile(`cypress/results/persona-4-${runId}.json`, {
+          runId,
+          appointmentId,
+          appointmentDate,
+          patient: { name: patient.name, email: patient.email },
+          doctor: { name: doctor.name, email: doctor.email },
+          prescription,
+        });
+      });
+    cy.get('form[action="../updateStatus"] textarea[name="comment"]').type(prescription);
+    cy.get('form[action="../updateStatus"] button[type="submit"]').click();
+    cy.location('pathname').should('include', '/doctor/patient.jsp');
+    cy.contains('Comment updated').should('be.visible');
+    cy.contains('table tbody tr', patient.name).should('contain.text', prescription);
+    cy.contains('table tbody tr', patient.name)
+      .contains('a', 'Comment / Prescription').should('have.class', 'disabled');
+    cy.screenshot(`persona-4/${runId}/TC10-comentario-guardado`, { capture: 'viewport', scale: true });
+    // Comprobar que el comentario persiste al volver a cargar la página.
+    cy.reload();
+    cy.contains('table tbody tr', patient.name).should('contain.text', prescription);
+    cy.contains('table tbody tr', patient.name)
+      .contains('a', 'Comment / Prescription').should('have.class', 'disabled');
     // PERSONA_4_DOCTOR_FIN
   });
 });
