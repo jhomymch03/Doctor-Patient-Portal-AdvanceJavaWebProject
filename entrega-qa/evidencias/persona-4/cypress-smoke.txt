@@ -1,0 +1,64 @@
+
+> hospital-portal-qa@1.0.0 cy:smoke
+> cypress run --browser chrome --env onlySmoke=true
+
+
+
+====================================================================================================
+
+  (Run Starting)
+
+  ┌────────────────────────────────────────────────────────────────────────────────────────────────┐
+  │ Cypress:        16.1.1                                                                         │
+  │ Browser:        Chrome 155 (headless)                                                          │
+  │ Node Version:   v24.19.0 (C:\Program Files\nodejs\node.exe)                                    │
+  │ Specs:          1 found (portal_hospital.cy.js)                                                │
+  │ Searched:       cypress/e2e/**/*.cy.js                                                         │
+  └────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+
+────────────────────────────────────────────────────────────────────────────────────────────────────
+
+  Running:  portal_hospital.cy.js                                                           (1 of 1)
+
+
+  Smoke test del portal hospitalario
+    √ TC-01 | abre portada y navegación principal (1269ms)
+    √ TC-02 | abre formularios principales (2504ms)
+    √ TC-03 | inicia sesión de administrador y consulta el panel (869ms)
+    √ TC-04 | rechaza acceso de administrador con contraseña incorrecta (537ms)
+
+  Flujo funcional de extremo a extremo
+    - TC-06 | rechaza acceso de paciente con credenciales inválidas
+    - TC-05 y TC-07 a TC-10 | registra paciente, especialista y doctor; crea y atiende una cita
+
+
+  4 passing (5s)
+  2 pending
+
+
+  (Results)
+
+  ┌────────────────────────────────────────────────────────────────────────────────────────────────┐
+  │ Tests:        6                                                                                │
+  │ Passing:      4                                                                                │
+  │ Failing:      0                                                                                │
+  │ Pending:      2                                                                                │
+  │ Skipped:      0                                                                                │
+  │ Screenshots:  0                                                                                │
+  │ Video:        false                                                                            │
+  │ Duration:     5 seconds                                                                        │
+  │ Spec Ran:     portal_hospital.cy.js                                                            │
+  └────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+
+====================================================================================================
+
+  (Run Finished)
+
+
+       Spec                                              Tests  Passing  Failing  Pending  Skipped
+  ┌────────────────────────────────────────────────────────────────────────────────────────────────┐
+  │ √  portal_hospital.cy.js                    00:05        6        4        -        2        - │
+  └────────────────────────────────────────────────────────────────────────────────────────────────┘
+    √  All specs passed!                        00:05        6        4        -        2        -

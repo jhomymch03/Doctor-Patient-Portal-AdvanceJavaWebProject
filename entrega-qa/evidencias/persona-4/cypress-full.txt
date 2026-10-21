@@ -1,0 +1,79 @@
+
+> hospital-portal-qa@1.0.0 cy:full
+> cypress run --browser chrome
+
+
+
+====================================================================================================
+
+  (Run Starting)
+
+  ┌────────────────────────────────────────────────────────────────────────────────────────────────┐
+  │ Cypress:        16.1.1                                                                         │
+  │ Browser:        Chrome 155 (headless)                                                          │
+  │ Node Version:   v24.19.0 (C:\Program Files\nodejs\node.exe)                                    │
+  │ Specs:          1 found (portal_hospital.cy.js)                                                │
+  │ Searched:       cypress/e2e/**/*.cy.js                                                         │
+  └────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+
+────────────────────────────────────────────────────────────────────────────────────────────────────
+
+  Running:  portal_hospital.cy.js                                                           (1 of 1)
+
+
+  Smoke test del portal hospitalario
+    √ TC-01 | abre portada y navegación principal (1081ms)
+    √ TC-02 | abre formularios principales (325ms)
+    √ TC-03 | inicia sesión de administrador y consulta el panel (527ms)
+    √ TC-04 | rechaza acceso de administrador con contraseña incorrecta (454ms)
+
+  Flujo funcional de extremo a extremo
+    √ TC-06 | rechaza acceso de paciente con credenciales inválidas (488ms)
+    √ TC-05 y TC-07 a TC-10 | registra paciente, especialista y doctor; crea y atiende una cita (8456ms)
+
+
+  6 passing (11s)
+
+
+  (Results)
+
+  ┌────────────────────────────────────────────────────────────────────────────────────────────────┐
+  │ Tests:        6                                                                                │
+  │ Passing:      6                                                                                │
+  │ Failing:      0                                                                                │
+  │ Pending:      0                                                                                │
+  │ Skipped:      0                                                                                │
+  │ Screenshots:  4                                                                                │
+  │ Video:        false                                                                            │
+  │ Duration:     11 seconds                                                                       │
+  │ Spec Ran:     portal_hospital.cy.js                                                            │
+  └────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+
+  (Screenshots)
+
+  -  C:\Users\willy\Downloads\entrega-qa\entrega-qa\trabajo-persona-4\repositorio\ent     (1280x900)
+     rega-qa\cypress\screenshots\portal_hospital.cy.js\persona-4\1792459066630253\TC0
+     9-reserva-confirmada.png
+  -  C:\Users\willy\Downloads\entrega-qa\entrega-qa\trabajo-persona-4\repositorio\ent     (1280x900)
+     rega-qa\cypress\screenshots\portal_hospital.cy.js\persona-4\1792459066630253\TC0
+     9-cita-pendiente.png
+  -  C:\Users\willy\Downloads\entrega-qa\entrega-qa\trabajo-persona-4\repositorio\ent     (1600x900)
+     rega-qa\cypress\screenshots\portal_hospital.cy.js\persona-4\1792459066630253\TC1
+     0-cita-del-doctor.png
+  -  C:\Users\willy\Downloads\entrega-qa\entrega-qa\trabajo-persona-4\repositorio\ent     (1600x900)
+     rega-qa\cypress\screenshots\portal_hospital.cy.js\persona-4\1792459066630253\TC1
+     0-comentario-guardado.png
+
+
+====================================================================================================
+
+  (Run Finished)
+
+
+       Spec                                              Tests  Passing  Failing  Pending  Skipped
+  ┌────────────────────────────────────────────────────────────────────────────────────────────────┐
+  │ √  portal_hospital.cy.js                    00:11        6        6        -        -        - │
+  └────────────────────────────────────────────────────────────────────────────────────────────────┘
+    √  All specs passed!                        00:11        6        6        -        -        -

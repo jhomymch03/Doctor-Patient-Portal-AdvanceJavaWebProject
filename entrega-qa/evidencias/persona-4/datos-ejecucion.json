@@ -1,0 +1,14 @@
+{
+  "runId": "1792459066630253",
+  "appointmentId": "4",
+  "appointmentDate": "2026-10-27",
+  "patient": {
+    "name": "Paciente QA 1792459066630253",
+    "email": "paciente.qa.1792459066630253@example.test"
+  },
+  "doctor": {
+    "name": "Doctor QA 1792459066630253",
+    "email": "doctor.qa.1792459066630253@example.test"
+  },
+  "prescription": "Control de prueba 1792459066630253"
+}

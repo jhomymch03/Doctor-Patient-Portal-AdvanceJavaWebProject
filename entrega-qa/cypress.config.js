@@ -7,6 +7,13 @@ module.exports = defineConfig({
     supportFile: false,
     testIsolation: true,
     setupNodeEvents(on, config) {
+      // La ventana headless debe contener el listado ancho de citas del doctor.
+      on('before:browser:launch', (browser, launchOptions) => {
+        if (browser.family === 'chromium' && browser.name !== 'electron' && browser.isHeadless) {
+          launchOptions.args.push('--window-size=1800,1100');
+        }
+        return launchOptions;
+      });
       config.expose = {
         ...config.expose,
         onlySmoke: String(config.env.onlySmoke) === 'true',
